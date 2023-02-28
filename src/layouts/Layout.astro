@@ -4,19 +4,16 @@ import {
   PUBLIC_SITE_DESCRIPTION,
   PUBLIC_GA_TRACKING_ID,
   ENABLE_LIGHTBOX,
-} from '../server-constants.ts'
-import {
-  getNavLink,
-  getStaticFilePath,
-} from '../lib/blog-helpers.ts'
-import '../styles/syntax-coloring.css'
-import GoogleAnalytics from '../components/GoogleAnalytics.astro'
+} from 'server-constants'
+import { getNavLink, getStaticFilePath } from 'lib/blog-helpers'
+import 'styles/syntax-coloring.css'
+import GoogleAnalytics from 'components/GoogleAnalytics.astro'
 
 export interface Props {
-  title: string
-  description: string
-  path: string
-  ogImage: string
+  title?: string
+  description?: string
+  path?: string
+  ogImage?: string
 }
 
 const { title = '', description = '', path = '/', ogImage = '' } = Astro.props
@@ -67,10 +64,13 @@ const navItems = [
 
       <ul>
         {
-          navItems.map(({ label, path: p }) => (
-            <li key={label}>
-              <a href={getNavLink(p)} class={p === path ? 'active' : null}>
-                {label}
+          navItems.map((item, idx) => (
+            <li key={idx}>
+              <a
+                href={getNavLink(item.path)}
+                class={item.path === path ? 'active' : null}
+              >
+                {item.label}
               </a>
             </li>
           ))
@@ -83,13 +83,15 @@ const navItems = [
     <footer class="footer">
       <div>
         <span>Powered by</span>
-        <a href="https://github.com/otoyo/astro-notion-blog"
-          >astro-notion-blog</a
-        >
+        <a href="https://dianananda.vercel.app">dionannd</a>
       </div>
     </footer>
 
-    {ENABLE_LIGHTBOX && <script src={getStaticFilePath('/scripts/fslightbox.js')} />}
+    {
+      ENABLE_LIGHTBOX && (
+        <script src={getStaticFilePath('/scripts/fslightbox.js')} />
+      )
+    }
   </body>
 </html>
 

@@ -1,3 +1,9 @@
 {
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "baseUrl": "src"
+  },
   "extends": "astro/tsconfigs/strict"
 }
