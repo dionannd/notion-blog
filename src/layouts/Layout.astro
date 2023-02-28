@@ -16,7 +16,12 @@ export interface Props {
   ogImage?: string
 }
 
-const { title = '', description = '', path = '/', ogImage = '' } = Astro.props
+const {
+  title = 'Dionannd',
+  description = '',
+  path = '/',
+  ogImage = '',
+} = Astro.props
 
 const siteTitle = title ? `${title} - ${PUBLIC_SITE_TITLE}` : PUBLIC_SITE_TITLE
 const siteDescription = description ? description : PUBLIC_SITE_DESCRIPTION
@@ -64,8 +69,8 @@ const navItems = [
 
       <ul>
         {
-          navItems.map((item, idx) => (
-            <li key={idx}>
+          navItems.map((item) => (
+            <li>
               <a
                 href={getNavLink(item.path)}
                 class={item.path === path ? 'active' : null}

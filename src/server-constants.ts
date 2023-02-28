@@ -16,6 +16,6 @@ export const REQUEST_TIMEOUT_MS = parseInt(
 )
 export const ENABLE_LIGHTBOX = import.meta.env.ENABLE_LIGHTBOX
 
-export const PUBLIC_SITE_TITLE = 'blog-dionannd'
+export const PUBLIC_SITE_TITLE = 'My blog - Dian Ananda'
 export const PUBLIC_SITE_DESCRIPTION =
-  'Blog for tracking my code, and my project'
+  'Blog for record tracking my code, and my project'
