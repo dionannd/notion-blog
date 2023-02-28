@@ -47,7 +47,6 @@ import type {
   FileObject,
   LinkToPage,
 } from '../interfaces'
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 import { Client } from '@notionhq/client'
 
 const client = new Client({
@@ -91,7 +90,7 @@ export async function getAllPosts(): Promise<Post[]> {
   let results: responses.PageObject[] = []
   while (true) {
     const res = (await client.databases.query(
-      params as any // eslint-disable-line @typescript-eslint/no-explicit-any
+      params as any
     )) as responses.QueryDatabaseResponse
 
     results = results.concat(res.results)
@@ -216,7 +215,7 @@ export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
 
     while (true) {
       const res = (await client.blocks.children.list(
-        params as any // eslint-disable-line @typescript-eslint/no-explicit-any
+        params as any
       )) as responses.RetrieveBlockChildrenResponse
 
       results = results.concat(res.results)
@@ -295,7 +294,7 @@ export async function getBlock(blockId: string): Promise<Block> {
     block_id: blockId,
   }
   const res = (await client.blocks.retrieve(
-    params as any // eslint-disable-line @typescript-eslint/no-explicit-any
+    params as any
   )) as responses.RetrieveBlockResponse
 
   return _buildBlock(res)
@@ -629,7 +628,7 @@ async function _getTableRows(blockId: string): Promise<TableRow[]> {
 
     while (true) {
       const res = (await client.blocks.children.list(
-        params as any // eslint-disable-line @typescript-eslint/no-explicit-any
+        params as any
       )) as responses.RetrieveBlockChildrenResponse
 
       results = results.concat(res.results)
@@ -678,7 +677,7 @@ async function _getColumns(blockId: string): Promise<Column[]> {
 
     while (true) {
       const res = (await client.blocks.children.list(
-        params as any // eslint-disable-line @typescript-eslint/no-explicit-any
+        params as any
       )) as responses.RetrieveBlockChildrenResponse
 
       results = results.concat(res.results)

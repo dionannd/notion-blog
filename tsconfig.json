@@ -2,8 +2,13 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "ESNext",
-    "lib": ["DOM", "ESNext"],
-    "baseUrl": "src"
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "baseUrl": "src",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   },
   "extends": "astro/tsconfigs/strict"
 }

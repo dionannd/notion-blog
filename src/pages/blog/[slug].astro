@@ -1,5 +1,5 @@
 ---
-import * as interfaces from 'lib/interfaces'
+import type * as interfaces from 'lib/interfaces'
 import {
   getPosts,
   getAllPosts,
@@ -24,12 +24,14 @@ import styles from 'styles/blog.module.css'
 
 export async function getStaticPaths() {
   const posts = await getAllPosts()
-  return posts.map((post: interfaces.Post) => ({ params: { slug: post.Slug } }))
+  return posts.map((post: interfaces.Post | any) => ({
+    params: { slug: post.Slug },
+  }))
 }
 
 const { slug } = Astro.params
 
-const post = await getPostBySlug(slug)
+const post = await getPostBySlug(slug as any)
 if (!post) {
   throw new Error('Post not found. slug: ${slug}')
 }
@@ -57,7 +59,7 @@ const fileAtacchedBlocks = extractTargetBlocks('image', blocks)
 // Download files
 await Promise.all(
   fileAtacchedBlocks
-    .map(async (block) => {
+    .map(async (block: any) => {
       const expiryTime = (block.Image || block.File).File.ExpiryTime
       if (Date.parse(expiryTime) > Date.now()) {
         return Promise.resolve(block)
@@ -66,7 +68,7 @@ await Promise.all(
     })
     .map((promise) =>
       promise.then((block) => {
-        let url!: URL
+        let url!: URL | any
         try {
           url = new URL((block.Image || block.File).File.Url)
         } catch (err) {

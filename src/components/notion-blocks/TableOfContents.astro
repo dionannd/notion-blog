@@ -1,11 +1,11 @@
 ---
-import * as interfaces from '../../lib/interfaces.ts'
-import { buildHeadingId } from '../../lib/blog-helpers.ts'
-import { snakeToKebab } from '../../lib/style-helpers.ts'
-import '../../styles/notion-color.css'
+import type * as interfaces from 'lib/interfaces'
+import { buildHeadingId } from 'lib/blog-helpers'
+import { snakeToKebab } from 'lib/style-helpers'
+import 'styles/notion-color.css'
 
 export interface Props {
-  block: interfaces.Block
+  block: interfaces.Block | any
   headings: interfaces.Block[]
 }
 
@@ -14,7 +14,7 @@ const { block, headings } = Astro.props
 
 <div class="table-of-contents">
   {
-    headings.map((headingBlock: interfaces.Block) => {
+    headings.map((headingBlock: interfaces.Block | any) => {
       const heading =
         headingBlock.Heading1 || headingBlock.Heading2 || headingBlock.Heading3
 

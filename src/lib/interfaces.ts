@@ -3,7 +3,7 @@ export interface Post {
   Title: string
   Icon: Emoji
   Cover: FileObject | null
-  Slug: string | undefined
+  Slug?: string
   Date: string
   Tags: SelectProperty[]
   Excerpt: string

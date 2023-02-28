@@ -13,17 +13,17 @@ import 'prismjs/components/prism-ruby'
 import 'prismjs/components/prism-sql'
 import 'prismjs/components/prism-typescript'
 import 'prismjs/components/prism-yaml'
-import * as interfaces from '../../lib/notion/interfaces'
+import type * as interfaces from 'lib/interfaces'
 import Caption from './Caption.astro'
 
 export interface Props {
-  block: interfaces.Block
+  block: interfaces.Block | any
 }
 
 const { block } = Astro.props
 
 const code = block.Code.RichTexts.map(
-  (richText: interfaces.RichText) => richText.Text.Content
+  (richText: interfaces.RichText | any) => richText.Text.Content
 ).join('')
 const language = block.Code.Language.toLowerCase()
 const grammer =
@@ -58,7 +58,7 @@ const grammer =
 
 <script>
   document.querySelectorAll('button.copy').forEach((button) => {
-    button.addEventListener('click', (ev) => {
+    button.addEventListener('click', (ev: any) => {
       navigator.clipboard
         .writeText(ev.target.getAttribute('data-code'))
         .then(() => {

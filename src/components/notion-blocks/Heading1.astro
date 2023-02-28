@@ -1,11 +1,11 @@
 ---
-import * as interfaces from '../../lib/interfaces.ts'
-import { buildHeadingId } from '../../lib/blog-helpers.ts'
+import type * as interfaces from 'lib/interfaces'
+import { buildHeadingId } from 'lib/blog-helpers'
 import RichText from './RichText.astro'
 import NotionBlocks from '../NotionBlocks.astro'
 
 export interface Props {
-  block: interfaces.Block
+  block: interfaces.Block | any
   headings: interfaces.Block[]
 }
 

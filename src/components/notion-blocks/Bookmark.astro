@@ -3,10 +3,10 @@ import createMetascraper from 'metascraper'
 import metascraperDescription from 'metascraper-description'
 import metascraperImage from 'metascraper-image'
 import metascraperTitle from 'metascraper-title'
-import * as interfaces from '../../lib/interfaces.ts'
+import type * as interfaces from 'lib/interfaces'
 
 export interface Props {
-  block: interfaces.Block
+  block: interfaces.Block | any
   urlMap: { [key: string]: string }
 }
 
@@ -19,8 +19,8 @@ const metascraper = createMetascraper([
   metascraperTitle(),
 ])
 
-let url: URL
-let metadata: Record<string, string>
+let url: URL | any
+let metadata: Record<string, string> | any
 try {
   url = new URL(urlString)
   const html = urlMap[urlString]

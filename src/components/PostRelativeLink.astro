@@ -1,11 +1,11 @@
 ---
-import { Post } from '../lib/interfaces.ts'
-import { getNavLink, getPostLink } from '../lib/blog-helpers.ts'
+import type { Post } from 'lib/interfaces'
+import { getNavLink, getPostLink } from 'lib/blog-helpers'
 import PostTags from './PostTags.astro'
 
 export interface Props {
-  prevPost: Post
-  nextPost: Post
+  prevPost: Post | any
+  nextPost: Post | any
 }
 
 const { prevPost, nextPost } = Astro.props

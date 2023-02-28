@@ -1,9 +1,9 @@
 ---
-import { Post } from '../lib/interfaces.ts'
-import { getPostLink } from '../lib/blog-helpers.ts'
+import type { Post } from 'lib/interfaces'
+import { getPostLink } from 'lib/blog-helpers'
 
 export interface Props {
-  post: Post
+  post: Post | any
 }
 
 const { post } = Astro.props

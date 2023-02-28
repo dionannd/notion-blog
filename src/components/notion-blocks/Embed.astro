@@ -1,17 +1,17 @@
 ---
-import * as interfaces from '../../lib/interfaces.ts'
-import { isTweetURL } from '../../lib/blog-helpers.ts'
+import type * as interfaces from 'lib/interfaces'
+import { isTweetURL } from 'lib/blog-helpers'
 import Bookmark from './Bookmark.astro'
 import TweetEmbed from './TweetEmbed.astro'
 
 export interface Props {
-  block: interfaces.Block
+  block: interfaces.Block | any
   urlMap: { [key: string]: string }
 }
 
 const { block, urlMap } = Astro.props
 
-let url: URL
+let url: URL | any
 try {
   url = block.Embed.Url
 } catch (err) {

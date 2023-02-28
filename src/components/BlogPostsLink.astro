@@ -1,6 +1,6 @@
 ---
-import { Post } from '../lib/interfaces.ts'
-import { getPostLink } from '../lib/blog-helpers.ts'
+import type { Post } from 'lib/interfaces'
+import { getPostLink } from 'lib/blog-helpers'
 import NoContents from './NoContents.astro'
 
 export interface Props {
@@ -18,8 +18,8 @@ const { heading, posts } = Astro.props
       <NoContents contents={posts} />
     ) : (
       <ul>
-        {posts.map((post: Post) => (
-          <li>
+        {posts.map((post: Post, idx: number) => (
+          <li key={idx}>
             <a href={getPostLink(post.Slug)}>{post.Title}</a>
           </li>
         ))}

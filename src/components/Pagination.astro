@@ -23,17 +23,15 @@ for (let i = startPage; i <= endPage; i++) {
 ---
 
 <div class="pagination">
-  <a href={getPageLink(1, tag)} className={isFirstPage && 'inactive'}
-    >&lt;&lt;</a
-  >
+  <a href={getPageLink(1, tag)} class={isFirstPage && 'inactive'}>&lt;&lt;</a>
   {
     pages.map((p: number) => (
-      <a href={getPageLink(p, tag)} className={p === currentPage && 'inactive'}>
+      <a href={getPageLink(p, tag)} class={p === currentPage && 'inactive'}>
         {p}
       </a>
     ))
   }
-  <a href={getPageLink(numberOfPages, tag)} className={isLastPage && 'inactive'}
+  <a href={getPageLink(numberOfPages, tag)} class={isLastPage && 'inactive'}
     >&gt;&gt;</a
   >
 </div>

@@ -1,9 +1,9 @@
 ---
 import katex from 'katex'
-import * as interfaces from '../../lib/interfaces.ts'
+import type * as interfaces from 'lib/interfaces'
 
 export interface Props {
-  block: interfaces.Block
+  block: interfaces.Block | any
 }
 
 const { block } = Astro.props

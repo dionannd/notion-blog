@@ -1,15 +1,15 @@
 ---
-import * as interfaces from '../../lib/interfaces.ts'
-import { isYouTubeURL, parseYouTubeVideoId } from '../../lib/blog-helpers.ts'
+import type * as interfaces from 'lib/interfaces'
+import { isYouTubeURL, parseYouTubeVideoId } from 'lib/blog-helpers'
 import Caption from './Caption.astro'
 
 export interface Props {
-  block: interfaces.Block
+  block: interfaces.Block | any
 }
 
 const { block } = Astro.props
 
-let url: URL
+let url: URL | any
 try {
   url = new URL(block.Video.External?.Url)
 } catch (err) {

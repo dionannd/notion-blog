@@ -1,8 +1,8 @@
 ---
-import { RichText } from '../../lib/interfaces.ts'
+import type { RichText } from 'lib/interfaces'
 
 export interface Props {
-  richTexts: RichText[]
+  richTexts: RichText[] | any
 }
 
 const { richTexts } = Astro.props
