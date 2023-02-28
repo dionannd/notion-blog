@@ -2,7 +2,8 @@ import { defineConfig } from 'astro/config';
 import { CUSTOM_DOMAIN, BASE_PATH } from './src/server-constants';
 import FeaturedImageDownloader from './src/integrations/featured-image-downloader';
 import PublicNotionCopier from './src/integrations/public-notion-copier';
-import react from "@astrojs/react";
+import react from '@astrojs/react';
+import image from "@astrojs/image";
 const getSite = function () {
   if (!process.env.CF_PAGES) {
     return new URL(BASE_PATH, 'http://localhost:3000').toString();
@@ -22,5 +23,5 @@ const getSite = function () {
 export default defineConfig({
   site: getSite(),
   base: BASE_PATH,
-  integrations: [FeaturedImageDownloader(), PublicNotionCopier(), react()]
+  integrations: [FeaturedImageDownloader(), PublicNotionCopier(), react(), image()]
 });
