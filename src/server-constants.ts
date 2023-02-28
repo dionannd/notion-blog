@@ -16,6 +16,7 @@ export const REQUEST_TIMEOUT_MS = parseInt(
 )
 export const ENABLE_LIGHTBOX = import.meta.env.ENABLE_LIGHTBOX
 
-export const PUBLIC_SITE_TITLE = 'My blog - Dian Ananda'
+export const PUBLIC_SITE_TITLE = 'My personal blog - Dian Ananda'
 export const PUBLIC_SITE_DESCRIPTION =
   'Blog for record tracking my code, and my project'
+export const HOMEPAGE_URL = 'https://dianananda.vercel.app'

@@ -1,0 +1,35 @@
+---
+import type { Post, SelectProperty } from 'lib/interfaces'
+import { getTagLink } from 'lib/blog-helpers'
+import 'styles/notion-color.css'
+
+export interface Props {
+  post: Post
+  enableLink?: boolean
+}
+
+const { post, enableLink = true } = Astro.props
+---
+
+<div class="text-[0.9rem] flex flex-wrap gap-2">
+  {
+    post.Tags &&
+      post.Tags.length > 0 &&
+      post.Tags.map((tag: SelectProperty) => {
+        if (enableLink) {
+          return (
+            <a href={getTagLink(tag.name)} class="tags">
+              {tag.name}
+            </a>
+          )
+        }
+        return <span class="tags">{tag.name}</span>
+      })
+  }
+</div>
+
+<style>
+  .tags {
+    @apply flex items-center flex-shrink min-w-0 rounded-sm py-[2px] px-[6px] leading-5 bg-orange-500 text-black font-light hover:bg-white hover:text-orange-500 hover:scale-105 transition-all duration-300;
+  }
+</style>

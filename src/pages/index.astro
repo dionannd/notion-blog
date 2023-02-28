@@ -1,13 +1,64 @@
 ---
+import { NUMBER_OF_POSTS_PER_PAGE } from 'server-constants'
+import {
+  getPosts,
+  getRankedPosts,
+  getAllTags,
+  getNumberOfPages,
+} from 'lib/notion/client'
+import Content from 'components/Content.astro'
+import Masthead from 'components/Masthead.astro'
 import Layout from '../layouts/Layout.astro'
+import { HOMEPAGE_URL } from 'server-constants'
+import { IoArrowForward } from 'react-icons/io5'
+import NoContents from 'components/NoContents.astro'
+import ImageFeatured from 'components/images/ImageFeatured.astro'
+import Tags from 'components/Tags.astro'
+
+const [posts, tags] = await Promise.all([
+  getPosts(NUMBER_OF_POSTS_PER_PAGE),
+  getRankedPosts(),
+  getAllTags(),
+  getNumberOfPages(),
+])
 ---
 
-<Layout>
-  <div class="container">
-    <main>
-      <h2 class="text-7xl text-blue-50">Welcome!</h2>
-      <p>Your astro-notion-blog deployed successfully!</p>
-      <p>Have fun!</p>
-    </main>
-  </div>
+<Layout title="Home" path="/">
+  <Masthead />
+  <Content>
+    <section>
+      <p class="mb-8 indent-4">
+        I'm a freelancer working as a front-end developer, I spend hours coding,
+        and I'm a forgetful person, so I wanted to create a blog to help me
+        remember what I've done or fix a bug.
+        <a
+          class="inline-flex items-center gap-1 indent-1 text-orange-500"
+          href={HOMEPAGE_URL}
+          >Read more about me <IoArrowForward className="inline" />
+        </a>
+      </p>
+    </section>
+    <section>
+      {
+        posts.length === 0 ? (
+          <NoContents />
+        ) : (
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {posts.map((post) => (
+              <li class="text-center mb-5">
+                <a href={`/blog/${post.Slug}`}>
+                  <ImageFeatured post={post} />
+                  <div class="mt-2 flex items-center w-full justify-center">
+                    <Tags post={post} />
+                  </div>
+                  <div class="mt-3 mb-1 text-xl font-bold">{post.Title}</div>
+                  {post.Excerpt && <div class="opacity-70">{post.Excerpt}</div>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </section>
+  </Content>
 </Layout>

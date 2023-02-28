@@ -1,0 +1,20 @@
+---
+import Image from './notion-blocks/Image.astro'
+
+const isProd = import.meta.env.PROD
+---
+
+<section class="relative mb-6 h-80 flex justify-center items-center">
+  <div class="absolute w-full h-full overflow-hidden">
+    <img
+      src="/src/images/4-computer-1209641_1920.jpg"
+      class="absolute inset-0 min-w-full min-h-full object-cover opacity-30"
+    />
+  </div>
+  <div class="z-10 text-center px-8 drop-shadow-lg shadow-black">
+    <div class="uppercase text-sm mb-4">Welcome to</div>
+    <div class="text-4xl font-mplus font-medium">
+      My personal <span class="text-orange-500">blog</span>
+    </div>
+  </div>
+</section>
