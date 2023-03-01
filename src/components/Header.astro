@@ -3,6 +3,10 @@ import HeaderLink from './HeaderLink.astro'
 import { HOMEPAGE_URL } from 'server-constants'
 import { IoLogoGithub } from 'react-icons/io5/index.js'
 import ThemeToggle from './ThemeToggleButton'
+import DropdownMenu from './DropdownMenu'
+import { getAllTags } from 'lib/notion/client'
+
+const [tags] = await Promise.all([getAllTags()])
 ---
 
 <header class="fixed w-full p-2 z-20 backdrop-blur-md">
@@ -24,7 +28,7 @@ import ThemeToggle from './ThemeToggleButton'
       </div>
       <div class="flex-1"></div>
       <ThemeToggle client:visible />
-      <!-- <DropdownMenu client:visible tags={Array.from(allTags)} /> -->
+      <DropdownMenu client:visible tags={tags} />
     </nav>
   </div>
 </header>

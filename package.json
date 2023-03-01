@@ -21,6 +21,7 @@
     "@astrojs/react": "^1.2.2",
     "@astrojs/rss": "^2.0.0",
     "@astrojs/tailwind": "^3.0.1",
+    "@headlessui/react": "^1.7.1",
     "@notionhq/client": "^2.2.3",
     "@supercharge/promise-pool": "^2.3.2",
     "@types/react": "^18.0.28",
@@ -54,7 +55,8 @@
     "cli-progress": "^3.11.2",
     "eslint": "^8.31.0",
     "eslint-plugin-astro": "^0.21.1",
-    "nx": "15.5.3"
+    "nx": "15.5.3",
+    "rehype-add-classes": "^1.0.0"
   },
   "nx": {
     "targets": {

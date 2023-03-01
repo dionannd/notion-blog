@@ -19,10 +19,19 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
 ---
 
 {
-  image && (
+  image ? (
     <img
       class="border border-slate-300 dark:border-zinc-700 rounded-xl aspect-[2.0] object-cover"
       src={image}
+      width={720 * 2}
+      height={720}
+      alt="Thumbnail"
+      loading="eager"
+    />
+  ) : (
+    <img
+      class="border border-slate-300 dark:border-zinc-700 rounded-xl aspect-[2.0] object-cover"
+      src="/images/fallback.webp"
       width={720 * 2}
       height={720}
       alt="Thumbnail"
