@@ -18,10 +18,14 @@ if (block.LinkToPage.Type === 'page_id') {
 {
   post ? (
     <p>
-      <a href={`${getPostLink(post.Slug)}`} class="link">
-        <span class="icon">
+      <a href={`${getPostLink(post.Slug)}`} class="font-semibold flex gap-1">
+        <span class="h-fit flex-shrink-0 relative">
           {post.Icon.Emoji ? post.Icon.Emoji : '📄'}
-          <img src="/images/icon-arrow-link.svg" class="icon-link" alt="" />
+          <img
+            src="/images/icon-arrow-link.svg"
+            class="block absolute top-[1em] right-0 w-2 h-2"
+            alt=""
+          />
         </span>
         <span class="text">{post.Title}</span>
       </a>
@@ -29,33 +33,16 @@ if (block.LinkToPage.Type === 'page_id') {
   ) : (
     <p>
       <a class="link">
-        <span class="icon">
+        <span class="h-fit flex-shrink-0 relative">
           🚫
-          <img src="/images/icon-arrow-link.svg" class="icon-link" alt="" />
+          <img
+            src="/images/icon-arrow-link.svg"
+            class="block absolute top-[1em] right-0 w-2 h-2"
+            alt=""
+          />
         </span>
         <span class="text">Post not found</span>
       </a>
     </p>
   )
 }
-
-<style>
-  .link {
-    font-weight: 600;
-    display: flex;
-    gap: 4px;
-  }
-  .icon {
-    height: fit-content;
-    flex-shrink: 0;
-    position: relative;
-  }
-  .icon-link {
-    display: block;
-    position: absolute;
-    top: 1em;
-    right: 0;
-    width: 8px;
-    height: 8px;
-  }
-</style>

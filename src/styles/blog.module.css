@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;600;700&display=swap');
 
+@font-face {
+  font-family: 'SFMono Reguler';
+  font-display: optional;
+  src: url('/fonts/SFMono-Regular.otf') format('otf');
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Sogoe UI', Helvetica, Arial,
     sans-serif, 'Apple Color Emoji', 'Sogoe UI Emoji', 'Sogoe UI Symbol';

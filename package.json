@@ -56,6 +56,8 @@
     "eslint": "^8.31.0",
     "eslint-plugin-astro": "^0.21.1",
     "nx": "15.5.3",
+    "prettier": "^2.8.4",
+    "prettier-plugin-tailwindcss": "^0.2.3",
     "rehype-add-classes": "^1.0.0"
   },
   "nx": {

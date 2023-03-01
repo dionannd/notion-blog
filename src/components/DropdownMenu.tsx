@@ -35,9 +35,12 @@ export default function DropdownMenu({ tags }: Props) {
             <div className="px-3 py-2 uppercase font-bold text-xs">
               Categories
             </div>
-            {tags.map((tag) => {
+            {tags.map((tag, idx: number) => {
               return (
-                <DropdownMenuItem href={`/categories/${getTagLink(tag.name)}`}>
+                <DropdownMenuItem
+                  key={idx}
+                  href={`/categories/${getTagLink(tag.name)}`}
+                >
                   {tag.name}
                 </DropdownMenuItem>
               );

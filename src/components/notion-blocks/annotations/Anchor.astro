@@ -11,7 +11,7 @@ const { richText } = Astro.props
 {
   /* prettier-ignore */
   richText.Href ? (
-    <a href={richText.Href}><slot /></a>
+    <a class="underline text-[#7a7975] dark:text-[#9c9c9c]" href={richText.Href}><slot /></a>
   ) : (
     <slot />
   )

@@ -2,22 +2,16 @@
 import type { RichText } from 'lib/interfaces'
 
 export interface Props {
-  richTexts: RichText[] | any
+  richTexts: RichText[]
 }
 
 const { richTexts } = Astro.props
 ---
 
 {
-  richTexts.length > 0 && richTexts[0].Text.Content && (
-    <div class="caption">{richTexts[0].Text.Content}</div>
+  richTexts.length > 0 && richTexts[0]?.Text?.Content && (
+    <div class="mt-[0.3rem] text-[0.9rem] text-zinc-900 dark:text-zinc-300">
+      {richTexts[0].Text.Content}
+    </div>
   )
 }
-
-<style>
-  .caption {
-    margin-top: 0.3rem;
-    font-size: 0.9rem;
-    color: var(--accents-3);
-  }
-</style>

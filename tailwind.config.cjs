@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         mplus: ["'M PLUS Rounded 1c'", 'Verdana', 'sans-serif'],
+        sfmono: ["'SFMono Reguler'", 'Helvetica', 'sans-serif'],
       },
     },
   },

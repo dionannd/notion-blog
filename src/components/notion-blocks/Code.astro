@@ -30,16 +30,16 @@ const grammer =
   Prism.languages[language.toLowerCase()] || Prism.languages.javascript
 ---
 
-<div class="code">
-  <div>
+<div class="code dark:text-zinc-600 text-zinc-300">
+  <div class="rounded-lg dark:bg-[#F7F6F3] bg-slate-800">
     {
       /* prettier-ignore */
       language === 'mermaid' ? (
         <pre class="mermaid">{code}</pre>
       ) : (
         <>
-          <div>
-            <button class="copy" data-code={code} data-done-text="Copied!">
+          <div class="flex justify-end">
+            <button class="copy " data-code={code} data-done-text="Copied!">
               Copy
             </button>
           </div>
@@ -70,26 +70,10 @@ const grammer =
 
 <style>
   .code {
-    display: block;
-    width: 100%;
-  }
-  .code > div {
-    background: rgb(247, 246, 243);
-    border-radius: var(--radius);
-  }
-  .code > div div {
-    display: flex;
-    justify-content: flex-end;
+    @apply block w-full;
   }
   .code button.copy {
-    display: block;
-    width: 4rem;
-    border: 0;
-    border-radius: var(--radius);
-    background-color: rgba(227, 226, 224, 0.5);
-    color: var(--fg);
-    line-height: 1.2rem;
-    cursor: pointer;
+    @apply block w-20 border-0 p-2 text-sm rounded-bl-lg rounded-tr-lg bg-[#EDEBE9] leading-5 cursor-pointer text-zinc-600;
   }
   .code pre {
     display: block;
@@ -104,7 +88,6 @@ const grammer =
   .code pre code {
     color: var(--fg);
     padding: 0;
-    background: rgb(247, 246, 243) !important;
     border-radius: 0;
   }
 </style>

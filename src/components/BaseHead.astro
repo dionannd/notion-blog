@@ -1,13 +1,20 @@
 ---
+import { PUBLIC_SITE_DESCRIPTION, PUBLIC_SITE_TITLE } from 'server-constants'
 import 'styles/blog.module.css'
 
 export interface Props {
   title: string
   description: string
   image?: string
+  path?: string | any
 }
 
-const { title, description, image = '/images/og-image.png' } = Astro.props
+const { title, description, image, path } = Astro.props
+
+const siteTitle = title ? title : PUBLIC_SITE_TITLE
+const siteDesc = description ? description : PUBLIC_SITE_DESCRIPTION
+const siteURL = new URL(path, Astro.site).toString()
+const siteOGImage = new URL('/images/og-image.png', Astro.site)
 ---
 
 <!-- Global Metadata -->
@@ -18,23 +25,24 @@ const { title, description, image = '/images/og-image.png' } = Astro.props
 <meta name="robots" content="max-image-preview:large" />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
-<meta name="description" content={description} />
+<title>{siteTitle}</title>
+<meta name="title" content={siteTitle} />
+<meta name="description" content={siteDesc} />
+<link rel="canonical" href={siteURL} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:url" content={siteURL} />
+<meta property="og:title" content={siteTitle} />
+<meta property="og:description" content={siteDesc} />
+<meta property="og:image" content={image || siteOGImage} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:url" content={siteURL} />
+<meta property="twitter:title" content={siteTitle} />
+<meta property="twitter:description" content={siteDesc} />
+<meta property="twitter:image" content={image || siteOGImage} />
 
 <link
   rel="stylesheet"

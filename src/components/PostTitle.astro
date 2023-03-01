@@ -15,25 +15,6 @@ if (post.Icon.Emoji) {
 }
 ---
 
-<h3 class="post-title">
+<h3 class="mt-3 mb-1 text-xl font-bold font-mplus">
   {enableLink ? <a href={getPostLink(post.Slug)}>{title}</a> : title}
 </h3>
-
-<style>
-  .post-title {
-    font-size: 1.6rem;
-    color: var(--fg);
-  }
-  .post-title a {
-    font-size: 1.2rem;
-    color: inherit;
-  }
-  @media (max-width: 640px) {
-    .post-title {
-      font-size: 1.2rem;
-    }
-    .post-title a {
-      font-size: 1.15rem;
-    }
-  }
-</style>

@@ -19,7 +19,7 @@ const { post, enableLink = true } = Astro.props
         if (enableLink) {
           return (
             <a
-              class="flex items-center flex-shrink min-w-0 rounded py-0.5 px-1.5 leading-5 bg-orange-500 hover:bg-white hover:text-orange-500 text-black hover:scale-105 transition-all duration-300"
+              class="flex items-center flex-shrink min-w-0 rounded py-0.5 px-1.5 leading-5 bg-orange-300 dark:bg-orange-500 hover:bg-white hover:dark:bg-white hover:text-orange-400 hover:dark:text-orange-500 text-black hover:scale-105 transition-all duration-300"
               href={getTagLink(tag.name).toLowerCase()}
             >
               {tag.name.toLowerCase()}

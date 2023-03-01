@@ -11,7 +11,7 @@ const { richText } = Astro.props
 {
   /* prettier-ignore */
   richText.Annotation.Code ? (
-    <code><slot /></code>
+    <code class="text-[#EB5757] font-sfmono bg-[#edeceb] dark:bg-[#292827] rounded-[3px] py-[0.2em] px-[0.4em]"><slot /></code>
   ) : (
     <slot />
   )
