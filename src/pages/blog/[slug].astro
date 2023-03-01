@@ -11,7 +11,21 @@ import {
   getAllBlocksByBlockId,
   downloadFile,
 } from 'lib/notion/client'
+import {
+  PUBLIC_SITE_TITLE,
+  PUBLIC_SITE_DESCRIPTION,
+  PUBLIC_GA_TRACKING_ID,
+} from 'server-constants'
 import { getPostLink, filePath, extractTargetBlocks } from 'lib/blog-helpers'
+import Content from 'components/Content.astro'
+import Masthead from 'components/Masthead.astro'
+import Image from 'components/Image.astro'
+import Tags from 'components/Tags.astro'
+import Body from 'components/Body.astro'
+import BaseHead from 'components/BaseHead.astro'
+import GoogleAnalytics from 'components/GoogleAnalytics.astro'
+import Header from 'components/Header.astro'
+import Footer from 'components/Footer.astro'
 import Layout from 'layouts/Layout.astro'
 import PostDate from 'components/PostDate.astro'
 import PostTags from 'components/PostTags.astro'
@@ -85,21 +99,70 @@ const currentPostIndex = allPosts.findIndex((post) => post.Slug === slug)
 const prevPost = allPosts[currentPostIndex + 1]
 const nextPost = allPosts[currentPostIndex - 1]
 
-let ogImage = ''
+let ogImage: any = ''
 if (post.FeaturedImage && post.FeaturedImage.Url) {
   ogImage = new URL(filePath(new URL(post.FeaturedImage.Url)), Astro.site)
 }
+
+let image = ''
+if (post.FeaturedImage && post.FeaturedImage.Url) {
+  if (import.meta.env.DEV) {
+    image = post.FeaturedImage.Url
+  } else {
+    image = filePath(new URL(post.FeaturedImage.Url))
+  }
+}
 ---
 
-<Layout
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+  <head>
+    <BaseHead
+      title={post.Title + ` | ${PUBLIC_SITE_TITLE}`}
+      description={post.Excerpt}
+      image={ogImage}
+    />
+  </head>
+  <Body>
+    <GoogleAnalytics trackingId={PUBLIC_GA_TRACKING_ID} />
+    <Header title={PUBLIC_SITE_TITLE} />
+    <main class="pt-[56px]">
+      <Content className="pt-6">
+        <PostTags post={post} />
+        <div class="mb-8">
+          {
+            post.FeaturedImage && (
+              <img
+                class="border border-slate-300 dark:border-zinc-700 rounded-xl aspect-[2.0] object-cover"
+                src={image}
+                width={720 * 2}
+                height={720}
+                alt="Thumbnail"
+                loading="eager"
+              />
+            )
+          }
+        </div>
+        <h1 class="text-3xl my-1 font-mplus">{post.Title}</h1>
+        <div>{post.Excerpt}</div>
+        <hr class="border-top border-zinc-400 my-4" />
+        <PostBody blocks={blocks} />
+        <span
+          class="underline underline-offset-2 hover:text-orange-500 decoration-orange-500 text-2xl"
+        ></span>
+      </Content>
+    </main>
+    <Footer />
+  </Body>
+  <!-- <Layout
   title={post.Title}
   description={post.Excerpt}
-  path={getPostLink(post.Slug)}
+  path={getPostLink(post.Slug as string)}
   ogImage={ogImage}
 >
-  <div className={styles.container}>
+  <div class={styles.container}>
     <main>
-      <div className={styles.post}>
+      <div class={styles.post}>
         <PostDate post={post} />
         <PostTags post={post} />
         <PostTitle post={post} enableLink={false} />
@@ -124,4 +187,5 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
       <BlogTagsLink heading="Categories" tags={tags} />
     </aside>
   </div>
-</Layout>
+</Layout> -->
+</html>

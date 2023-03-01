@@ -3,7 +3,6 @@ import type * as interfaces from 'lib/interfaces'
 import { getPostByPageId } from 'lib/notion/client'
 import { getPostLink } from 'lib/blog-helpers'
 import 'styles/notion-color.css'
-import arrow from 'images/icon-arrow-link.svg'
 
 export interface Props {
   block: interfaces.Block | any
@@ -22,7 +21,7 @@ if (block.LinkToPage.Type === 'page_id') {
       <a href={`${getPostLink(post.Slug)}`} class="link">
         <span class="icon">
           {post.Icon.Emoji ? post.Icon.Emoji : '📄'}
-          <img src={arrow} class="icon-link" alt="" />
+          <img src="/images/icon-arrow-link.svg" class="icon-link" alt="" />
         </span>
         <span class="text">{post.Title}</span>
       </a>
@@ -32,7 +31,7 @@ if (block.LinkToPage.Type === 'page_id') {
       <a class="link">
         <span class="icon">
           🚫
-          <img src={arrow} class="icon-link" alt="" />
+          <img src="/images/icon-arrow-link.svg" class="icon-link" alt="" />
         </span>
         <span class="text">Post not found</span>
       </a>

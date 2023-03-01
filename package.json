@@ -21,7 +21,7 @@
     "@astrojs/react": "^1.2.2",
     "@astrojs/rss": "^2.0.0",
     "@astrojs/tailwind": "^3.0.1",
-    "@headlessui/react": "^1.7.1",
+    "@headlessui/react": "^1.7.7",
     "@notionhq/client": "^2.2.3",
     "@supercharge/promise-pool": "^2.3.2",
     "@types/react": "^18.0.28",

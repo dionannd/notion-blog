@@ -18,7 +18,7 @@ const { post, enableLink = true } = Astro.props
       post.Tags.map((tag: SelectProperty) => {
         if (enableLink) {
           return (
-            <a href={getTagLink(tag.name)} class="tags">
+            <a href={getTagLink(tag.name).toLowerCase()} class="tags">
               {tag.name}
             </a>
           )

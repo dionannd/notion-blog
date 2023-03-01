@@ -18,17 +18,17 @@ if (block.Image.External) {
 }
 ---
 
-<figure class="image">
+<figure class="flex my-0 mx-auto">
   {
     image && (
-      <div>
+      <div class="mx-auto">
         <div>
           {ENABLE_LIGHTBOX ? (
             <a data-fslightbox href={image} data-type="image">
-              <img src={image} alt="image block" />
+              <img class="rounded-xl block" src={image} alt="image block" />
             </a>
           ) : (
-            <img src={image} alt="image block" />
+            <img class="rounded-xl block" src={image} alt="image block" />
           )}
         </div>
         <Caption richTexts={block.Image.Caption} />
@@ -36,18 +36,3 @@ if (block.Image.External) {
     )
   }
 </figure>
-
-<style>
-  .image {
-    display: flex;
-    margin: 0 auto;
-  }
-  .image > div {
-    margin: 0 auto;
-  }
-  .image > div > div {
-  }
-  .image > div > div img {
-    display: block;
-  }
-</style>
