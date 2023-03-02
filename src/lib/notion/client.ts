@@ -90,7 +90,7 @@ export async function getAllPosts(): Promise<Post[]> {
   let results: responses.PageObject[] = []
   while (true) {
     const res = (await client.databases.query(
-      params as any
+      params
     )) as responses.QueryDatabaseResponse
 
     results = results.concat(res.results)
@@ -215,7 +215,7 @@ export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
 
     while (true) {
       const res = (await client.blocks.children.list(
-        params as any
+        params
       )) as responses.RetrieveBlockChildrenResponse
 
       results = results.concat(res.results)
@@ -294,7 +294,7 @@ export async function getBlock(blockId: string): Promise<Block> {
     block_id: blockId,
   }
   const res = (await client.blocks.retrieve(
-    params as any
+    params
   )) as responses.RetrieveBlockResponse
 
   return _buildBlock(res)
@@ -628,7 +628,7 @@ async function _getTableRows(blockId: string): Promise<TableRow[]> {
 
     while (true) {
       const res = (await client.blocks.children.list(
-        params as any
+        params
       )) as responses.RetrieveBlockChildrenResponse
 
       results = results.concat(res.results)
@@ -677,7 +677,7 @@ async function _getColumns(blockId: string): Promise<Column[]> {
 
     while (true) {
       const res = (await client.blocks.children.list(
-        params as any
+        params
       )) as responses.RetrieveBlockChildrenResponse
 
       results = results.concat(res.results)
