@@ -41,7 +41,7 @@ export const getBlocks: any = async (blockId: string) => {
           acc[acc.length - 1][acc[acc.length - 1].type].children?.push(curr);
         } else {
           acc.push({
-            id: (10 ** 99, 10 ** 100).toString(),
+            id: (10 ** 100).toString(),
             type: "bulleted_list",
             bulleted_list: { children: [curr] },
           });
