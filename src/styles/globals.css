@@ -4,10 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Sogoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Sogoe UI Emoji", "Sogoe UI Symbol";
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  overflow-wrap: break-word;
+@layer base {
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Sogoe UI", Helvetica, Arial,
+      sans-serif, "Apple Color Emoji", "Sogoe UI Emoji", "Sogoe UI Symbol";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-wrap: break-word;
+  }
 }

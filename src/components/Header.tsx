@@ -15,7 +15,9 @@ const Header = () => {
             <a
               className="inline-flex items-center gap-1"
               href="https://dianananda.site"
-            ></a>
+            >
+              About
+            </a>
             <a
               className="inline-flex items-center gap-1"
               href="https://github.com/dionannd/astro-notion-blog"
