@@ -3,30 +3,21 @@ import Layout from "@/components/Layout";
 import MastHead from "@/components/MastHead";
 import NoContent from "@/components/NoContent";
 import { HOMEPAGE_URL } from "@/lib/config";
-import { Properties } from "@/lib/interface";
+import { Properties, RootObject } from "@/lib/interface";
 import { getDatabase } from "@/lib/notion";
 import type { NextPage } from "next";
 import { IoArrowForward } from "react-icons/io5";
+import Image from "next/image";
 
 export const databaseId = process.env.NOTION_DATABASE_ID;
 
-export const getStaticProps = async () => {
-  const database = await getDatabase(databaseId as string);
-
-  return {
-    props: {
-      datas: database,
-    },
-  };
-};
-
 interface Props {
-  datas: Properties[];
+  datas: any;
 }
 
-const Home = ({ datas }: Props) => {
+const Home: NextPage<Props> = ({ datas }: Props) => {
   return (
-    <Layout datas={datas}>
+    <Layout datas={datas} className={datas.length > 0 ? "h-full" : "h-screen"}>
       <MastHead />
       <Content>
         <section>
@@ -42,11 +33,32 @@ const Home = ({ datas }: Props) => {
             </a>
           </p>
         </section>
-        {datas.length === 0 ? (
+        {datas.length > 0 ? (
           <section>
-            {datas.map((post: any, idx: number) => (
-              <h1 key={idx}>Test</h1>
-            ))}
+            <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {datas.map((post: RootObject, idx: number) => (
+                <li className="mb-5 text-center" key={idx}>
+                  <a href={`/blog/`}>
+                    <div className="relative w-full duration-300 hover:scale-105">
+                      <Image
+                        className="aspect-[2] rounded-xl border border-slate-300 dark:border-zinc-700"
+                        src="/images/default-fallback-image.webp"
+                        width={720 * 2}
+                        height={720}
+                        alt="Thumbnail"
+                      />
+                      <div className="z-100 absolute top-0 left-0 flex h-full w-full cursor-pointer items-center justify-center bg-black/40 opacity-0 transition-all duration-500 group-hover:opacity-100">
+                        <p className="text-light font-bold">Read More</p>
+                      </div>
+                    </div>
+                    <div className="mt-3 text-xl font-bold">title</div>
+                    {post.properties.Description && (
+                      <div className="opacity-70">description</div>
+                    )}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </section>
         ) : (
           <NoContent />
@@ -54,6 +66,17 @@ const Home = ({ datas }: Props) => {
       </Content>
     </Layout>
   );
+};
+
+export const getStaticProps = async () => {
+  const database = await getDatabase(databaseId as string);
+
+  return {
+    props: {
+      datas: database,
+    },
+    revalidate: 1,
+  };
 };
 
 export default Home;

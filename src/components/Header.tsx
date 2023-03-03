@@ -1,11 +1,11 @@
 import { HOMEPAGE_URL } from "@/lib/config";
-import { Properties } from "@/lib/interface";
+import { RootObject } from "@/lib/interface";
 import { IoLogoGithub } from "react-icons/io5";
 import DropdownMenu from "./DropdownMenu";
 import ThemeToggle from "./ThemeToggleButton";
 
 interface Props {
-  datas?: Properties[];
+  datas?: RootObject[];
 }
 
 const Header = ({ datas }: Props) => {
