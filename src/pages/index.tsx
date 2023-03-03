@@ -1,6 +1,9 @@
 import Content from "@/components/Content";
 import Layout from "@/components/Layout";
 import MastHead from "@/components/MastHead";
+import NoContent from "@/components/NoContent";
+import { HOMEPAGE_URL } from "@/lib/config";
+import { Properties } from "@/lib/interface";
 import { getDatabase } from "@/lib/notion";
 import type { NextPage } from "next";
 import { IoArrowForward } from "react-icons/io5";
@@ -17,11 +20,13 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home: NextPage = ({ datas }: any) => {
-  console.log(datas);
+interface Props {
+  datas: Properties[];
+}
 
+const Home = ({ datas }: Props) => {
   return (
-    <Layout>
+    <Layout datas={datas}>
       <MastHead />
       <Content>
         <section>
@@ -31,17 +36,21 @@ const Home: NextPage = ({ datas }: any) => {
             help me remember what I've done or fix a bug.
             <a
               className="inline-flex items-center gap-1 indent-1 text-orange-500"
-              href="https://dianananda.site"
+              href={HOMEPAGE_URL}
             >
               Read more about me <IoArrowForward className="inline" />
             </a>
           </p>
         </section>
-        <section>
-          {datas.map((post: any, idx: number) => (
-            <h1 key={idx}>Test</h1>
-          ))}
-        </section>
+        {datas.length === 0 ? (
+          <section>
+            {datas.map((post: any, idx: number) => (
+              <h1 key={idx}>Test</h1>
+            ))}
+          </section>
+        ) : (
+          <NoContent />
+        )}
       </Content>
     </Layout>
   );

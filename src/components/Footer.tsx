@@ -1,7 +1,7 @@
+import { HOMEPAGE_URL } from "@/lib/config";
 import React from "react";
 
 const Footer = () => {
-  const HOMEPAGE_URL = "https://dianananda.site";
   const today = new Date();
 
   return (

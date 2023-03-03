@@ -1,7 +1,14 @@
+import { HOMEPAGE_URL } from "@/lib/config";
+import { Properties } from "@/lib/interface";
 import { IoLogoGithub } from "react-icons/io5";
+import DropdownMenu from "./DropdownMenu";
 import ThemeToggle from "./ThemeToggleButton";
 
-const Header = () => {
+interface Props {
+  datas?: Properties[];
+}
+
+const Header = ({ datas }: Props) => {
   return (
     <header className="fixed z-20 w-full p-2 backdrop-blur-md">
       <div className="mx-auto max-w-3xl">
@@ -12,15 +19,12 @@ const Header = () => {
             </h2>
           </a>
           <div className="hidden items-center gap-6 md:flex">
-            <a
-              className="inline-flex items-center gap-1"
-              href="https://dianananda.site"
-            >
+            <a className="inline-flex items-center gap-1" href={HOMEPAGE_URL}>
               About
             </a>
             <a
               className="inline-flex items-center gap-1"
-              href="https://github.com/dionannd/astro-notion-blog"
+              href="https://github.com/dionannd/notion-blog"
               target="_blank"
             >
               <IoLogoGithub />
@@ -29,7 +33,7 @@ const Header = () => {
           </div>
           <div className="flex-1"></div>
           <ThemeToggle />
-          {/* <DropdownMenu client:visible tags={tags} /> */}
+          <DropdownMenu tags={datas} />
         </nav>
       </div>
     </header>
