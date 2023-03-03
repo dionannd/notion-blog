@@ -1,9 +1,10 @@
 import { Fragment } from "react";
 import Head from "next/head";
-import { getDatabase, getPage, getBlocks } from "../lib/notion";
+import { getDatabase, getPage, getBlocks } from "@/lib/notion";
 import Link from "next/link";
-import { databaseId } from "./index.js";
-import styles from "./post.module.css";
+import { databaseId } from "./index";
+import styles from "@/styles/post.module.css";
+import Layout from "@/components/Layout";
 
 export const Text = ({ text }: any) => {
   if (!text) {
@@ -208,12 +209,7 @@ export default function Post({ page, blocks }: any) {
     return <div />;
   }
   return (
-    <div>
-      <Head>
-        <title>{page.properties.Name.title[0].plain_text}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+    <Layout title={page.properties.Name.title[0].plain_text}>
       <article className={styles.container}>
         <h1 className={styles.name}>
           <Text text={page.properties.Name.title} />
@@ -227,14 +223,18 @@ export default function Post({ page, blocks }: any) {
           </Link>
         </section>
       </article>
-    </div>
+    </Layout>
   );
 }
 
 export const getStaticPaths = async () => {
   const database = await getDatabase(databaseId as string);
   return {
-    paths: database.map((page) => ({ params: { id: page.id } })),
+    paths: database.map((page: any) => ({
+      params: {
+        id: page.id,
+      },
+    })),
     fallback: true,
   };
 };

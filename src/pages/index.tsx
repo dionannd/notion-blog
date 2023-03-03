@@ -70,7 +70,6 @@ const Home: NextPage<Props> = ({ datas }: Props) => {
 
 export const getStaticProps = async () => {
   const database = await getDatabase(databaseId as string);
-
   return {
     props: {
       datas: database,

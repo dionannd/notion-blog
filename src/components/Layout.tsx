@@ -9,12 +9,13 @@ interface Props {
   children: React.ReactNode;
   datas?: RootObject[];
   className?: string;
+  title?: string;
 }
 
-const Layout = ({ children, datas, className }: Props) => {
+const Layout = ({ children, datas, className, title }: Props) => {
   return (
     <div>
-      <BaseHead />
+      <BaseHead title={title} />
 
       <main className="break-words bg-orange-50 leading-6 text-zinc-900 transition-colors duration-500 dark:bg-zinc-900 dark:text-zinc-300">
         <Header datas={datas} />

@@ -13,3 +13,15 @@
     overflow-wrap: break-word;
   }
 }
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-weight: 800;
+}
