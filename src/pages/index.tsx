@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -39,7 +40,7 @@ const Home: NextPage<Props> = ({ datas }: Props) => {
         {datas.length > 0 ? (
           <section>
             <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {datas.map((post: RootObject, idx: number) => (
+              {datas.map((post: any, idx: number) => (
                 <li className="mb-5 text-center" key={idx}>
                   <Link href={`/blog/${post.id}`}>
                     <div className="relative w-full duration-300 hover:scale-105">
