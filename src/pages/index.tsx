@@ -5,7 +5,7 @@ import Link from "next/link";
 import { IoArrowForward } from "react-icons/io5";
 
 import { databaseId, HOMEPAGE_URL } from "@/lib/config";
-import { getDatabase } from "@/lib/notion";
+import { getDatabase, getDb } from "@/lib/notion";
 
 import Content from "@/components/Content";
 import Layout from "@/components/Layout";
@@ -13,15 +13,15 @@ import MastHead from "@/components/MastHead";
 import NoContent from "@/components/NoContent";
 import { Text } from "@/components/Text";
 
-import { RootObject } from "@/types/pages";
+import { IPages } from "@/types/pages";
 
 interface Props {
-  datas: RootObject[];
+  pages: IPages[];
 }
 
-const Home: NextPage<Props> = ({ datas }: Props) => {
+const Home: NextPage<Props> = ({ pages }: Props) => {
   return (
-    <Layout datas={datas} className={datas.length > 0 ? "h-full" : "h-screen"}>
+    <Layout className={pages.length > 0 ? "h-full" : "h-screen"}>
       <MastHead />
       <Content>
         <section>
@@ -37,18 +37,18 @@ const Home: NextPage<Props> = ({ datas }: Props) => {
             </a>
           </p>
         </section>
-        {datas.length > 0 ? (
+        {pages.length > 0 ? (
           <section>
             <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {datas.map((post: any, idx: number) => (
+              {pages.map((post: IPages, idx: number) => (
                 <li className="mb-5 text-center" key={idx}>
                   <Link href={`/blog/${post.id}`}>
                     <div className="relative w-full duration-300 hover:scale-105">
                       <Image
                         className="aspect-[2] rounded-xl border border-slate-300 object-cover dark:border-zinc-700"
                         src={
-                          post.cover
-                            ? post.cover.external.url
+                          post.cover?.external?.url
+                            ? (post.cover?.external?.url as string)
                             : "/images/default-fallback-image.webp"
                         }
                         width={720 * 2}
@@ -59,10 +59,10 @@ const Home: NextPage<Props> = ({ datas }: Props) => {
 
                     <div className="flex flex-col">
                       <div className="mt-3 mb-1 font-mplus text-xl font-bold">
-                        <Text text={post.properties.Name.title} />
+                        <Text text={post.properties?.Name?.title} />
                       </div>
 
-                      {post.properties.Description && (
+                      {post.properties?.Description && (
                         <Text
                           className="opacity-70"
                           text={post.properties.Description.rich_text}
@@ -83,10 +83,13 @@ const Home: NextPage<Props> = ({ datas }: Props) => {
 };
 
 export const getStaticProps = async () => {
-  const database = await getDatabase(databaseId as string);
+  const database = await getDb(databaseId);
+  const pages = await getDatabase(databaseId);
+
   return {
     props: {
-      datas: database,
+      databases: database,
+      pages: pages,
     },
     revalidate: 1,
   };

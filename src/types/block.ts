@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export interface RootObject {
+export interface IBlock {
   object?: string;
   id?: string;
   parent?: Parent;

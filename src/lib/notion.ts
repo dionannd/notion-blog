@@ -12,6 +12,11 @@ export const getDatabase = async (databaseId: string) => {
   return response.results;
 };
 
+export const getDb = async (dbId: string) => {
+  const response = await notion.databases.retrieve({ database_id: dbId });
+  return response;
+};
+
 export const getPage = async (pageId: string) => {
   const response = await notion.pages.retrieve({ page_id: pageId });
   return response;
@@ -42,7 +47,7 @@ export const getBlocks: any = async (blockId: string) => {
           acc[acc.length - 1][acc[acc.length - 1].type].children?.push(curr);
         } else {
           acc.push({
-            id: (10 ** 100).toString(),
+            id: getRandomInt(10 ** 99, 10 ** 100).toString(),
             type: "bulleted_list",
             bulleted_list: { children: [curr] },
           });

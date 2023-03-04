@@ -1,46 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export interface IPages {
-  object?: string;
-  id?: string;
-  created_time?: Date;
-  last_edited_time?: Date;
-  created_by?: CreatedBy;
-  last_edited_by?: LastEditedBy;
-  cover?: Cover;
-  icon?: Icon;
-  parent?: Parent;
-  archived?: boolean;
-  properties?: Properties;
-  url?: string;
-}
-
-export interface CreatedBy {
-  object?: string;
-  id?: string;
-}
-
-export interface LastEditedBy {
-  object?: string;
-  id?: string;
-}
-
-export interface Cover {
-  type?: string;
-  external?: External;
-}
-
-export interface External {
-  url?: string;
-}
-
-export interface Icon {
-  type?: string;
-  emoji?: string;
-}
-
-export interface Parent {
-  type?: string;
-  database_id?: string;
+export interface IDatabase {
+  object: string;
+  id: string;
+  created_time: Date;
+  last_edited_time: Date;
+  icon: Icon;
+  cover: Cover;
+  url: string;
+  title: Title[];
+  description: Description[];
+  properties: Properties;
+  parent: Parent;
+  archived: boolean;
+  is_inline: boolean;
 }
 
 export interface Properties {
@@ -57,6 +29,55 @@ export interface Properties {
   Tweet?: Tweet;
 }
 
+export interface Parent {
+  type?: string;
+  database_id?: string;
+}
+
+export interface Icon {
+  type: string;
+  emoji: string;
+}
+
+export interface External {
+  url: string;
+}
+
+export interface Cover {
+  type: string;
+  external: External;
+}
+
+export interface Text {
+  content?: string;
+  link?: string;
+}
+
+export interface Annotations {
+  bold?: boolean;
+  italic?: boolean;
+  strikethrough?: boolean;
+  underline?: boolean;
+  code?: boolean;
+  color?: string;
+}
+
+export interface Title {
+  type?: string;
+  text?: Text;
+  annotations?: Annotations;
+  plain_text?: string;
+  href?: string;
+}
+
+export interface Description {
+  type?: string;
+  text: Text;
+  annotations: Annotations;
+  plain_text: string;
+  href?: string;
+}
+
 export interface Name {
   id?: string;
   type?: string;
@@ -68,7 +89,7 @@ export interface Title {
   text?: Text;
   annotations?: Annotations;
   plain_text?: string;
-  href?: any;
+  href?: string;
 }
 
 export interface Slug {
@@ -134,7 +155,7 @@ export interface LastUpdated {
 export interface Tweet {
   id?: string;
   type?: string;
-  rich_text?: any[];
+  rich_text?: RichText[];
 }
 
 export interface RichText {
@@ -142,12 +163,12 @@ export interface RichText {
   text?: Text;
   annotations?: Annotations;
   plain_text?: string;
-  href?: any;
+  href?: string;
 }
 
 export interface Text {
   content?: string;
-  link?: any;
+  link?: string;
 }
 
 export interface Annotations {
