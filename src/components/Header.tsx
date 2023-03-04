@@ -2,10 +2,11 @@ import Link from "next/link";
 import { IoLogoGithub } from "react-icons/io5";
 
 import { HOMEPAGE_URL } from "@/lib/config";
-import { RootObject } from "@/lib/interface";
 
 import DropdownMenu from "./DropdownMenu";
 import ThemeToggle from "./ThemeToggleButton";
+
+import { RootObject } from "@/types/pages";
 
 interface Props {
   datas?: RootObject[];

@@ -2,7 +2,6 @@
 import styles from "@/styles/post.module.css";
 
 import clsxm from "@/lib/clsxm";
-import { RichText } from "@/lib/interface";
 
 interface Props {
   text: any;
@@ -13,7 +12,7 @@ export const Text = ({ text, className }: Props) => {
   if (!text) {
     return null;
   }
-  return text.map((value: RichText) => {
+  return text.map((value: any) => {
     const {
       annotations: { bold, code, color, italic, strikethrough, underline },
       text,

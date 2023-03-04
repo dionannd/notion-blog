@@ -1,11 +1,12 @@
 import React from "react";
 
 import clsxm from "@/lib/clsxm";
-import { RootObject } from "@/lib/interface";
 
 import BaseHead from "./BaseHead";
 import Footer from "./Footer";
 import Header from "./Header";
+
+import { RootObject } from "@/types/pages";
 
 interface Props {
   children: React.ReactNode;
