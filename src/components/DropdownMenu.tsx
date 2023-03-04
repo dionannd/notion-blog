@@ -3,14 +3,7 @@ import { Menu, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
 import { IoMenu } from "react-icons/io5";
 
-import DropdownMenuItem from "./DropdownMenuItem";
-
-interface Props {
-  tags: any;
-}
-
-const DropdownMenu = ({ tags }: Props) => {
-  // console.log(tags);
+const DropdownMenu = () => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -36,13 +29,7 @@ const DropdownMenu = ({ tags }: Props) => {
             <div className="px-3 py-2 text-xs font-bold uppercase">
               Categories
             </div>
-            {tags.map((tag: any, idx: number) => {
-              return (
-                <DropdownMenuItem key={idx} href={`/categories/${tag.Tags}`}>
-                  test
-                </DropdownMenuItem>
-              );
-            })}
+            tes
           </div>
         </Menu.Items>
       </Transition>

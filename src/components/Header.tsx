@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import { IoLogoGithub } from "react-icons/io5";
 
@@ -6,13 +7,7 @@ import { HOMEPAGE_URL } from "@/lib/config";
 import DropdownMenu from "./DropdownMenu";
 import ThemeToggle from "./ThemeToggleButton";
 
-import { RootObject } from "@/types/pages";
-
-interface Props {
-  datas?: RootObject[];
-}
-
-const Header = ({ datas }: Props) => {
+const Header = () => {
   return (
     <header className="fixed z-20 w-full p-2 backdrop-blur-md">
       <div className="mx-auto max-w-3xl">
@@ -37,7 +32,7 @@ const Header = ({ datas }: Props) => {
           </div>
           <div className="flex-1"></div>
           <ThemeToggle />
-          <DropdownMenu tags={datas} />
+          <DropdownMenu />
         </nav>
       </div>
     </header>
