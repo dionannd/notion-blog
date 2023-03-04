@@ -1,5 +1,6 @@
-import clsxm from "@/lib/clsxm";
 import React from "react";
+
+import clsxm from "@/lib/clsxm";
 
 interface Props {
   children: React.ReactNode;

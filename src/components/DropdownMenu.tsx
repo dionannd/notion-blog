@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Menu, Transition } from "@headlessui/react";
-import { Properties } from "@/lib/interface";
 import React, { Fragment } from "react";
 import { IoMenu } from "react-icons/io5";
+
 import DropdownMenuItem from "./DropdownMenuItem";
 
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
 }
 
 const DropdownMenu = ({ tags }: Props) => {
-  console.log(tags);
+  // console.log(tags);
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>

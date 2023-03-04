@@ -1,37 +1,15 @@
-import { Fragment } from "react";
-import Head from "next/head";
-import { getDatabase, getPage, getBlocks } from "@/lib/notion";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-case-declarations */
 import Link from "next/link";
-import { databaseId } from "./index";
-import styles from "@/styles/post.module.css";
-import Layout from "@/components/Layout";
+import { Fragment } from "react";
 
-export const Text = ({ text }: any) => {
-  if (!text) {
-    return null;
-  }
-  return text.map((value: any) => {
-    const {
-      annotations: { bold, code, color, italic, strikethrough, underline },
-      text,
-    } = value;
-    return (
-      <span
-        className={[
-          bold ? styles.bold : "",
-          code ? styles.code : "",
-          italic ? styles.italic : "",
-          strikethrough ? styles.strikethrough : "",
-          underline ? styles.underline : "",
-        ].join(" ")}
-        style={color !== "default" ? { color } : {}}
-        key={text.content}
-      >
-        {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
-      </span>
-    );
-  });
-};
+import styles from "@/styles/post.module.css";
+
+import { databaseId } from "@/lib/config";
+import { getBlocks, getDatabase, getPage } from "@/lib/notion";
+
+import Layout from "@/components/Layout";
+import { Text } from "@/components/Text";
 
 const renderNestedList = (block: any) => {
   const { type } = block;
@@ -117,12 +95,12 @@ const renderBlock = (block: any) => {
         </div>
       );
     case "image":
-      const src =
-        value.type === "external" ? value.external.url : value.file.url;
+      // const src =
+      //   value.type === "external" ? value.external.url : value.file.url;
       const caption = value.caption ? value.caption[0]?.plain_text : "";
       return (
         <figure>
-          <img src={src} alt={caption} />
+          {/* <img src={src} alt={caption} /> */}
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
       );
