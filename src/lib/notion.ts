@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Client } from "@notionhq/client";
 
 const notion = new Client({

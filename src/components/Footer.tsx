@@ -1,5 +1,6 @@
-import { HOMEPAGE_URL } from "@/lib/config";
 import React from "react";
+
+import { HOMEPAGE_URL } from "@/lib/config";
 
 const Footer = () => {
   const today = new Date();

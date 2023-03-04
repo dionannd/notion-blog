@@ -1,6 +1,8 @@
+import React from "react";
+
 import clsxm from "@/lib/clsxm";
 import { RootObject } from "@/lib/interface";
-import React from "react";
+
 import BaseHead from "./BaseHead";
 import Footer from "./Footer";
 import Header from "./Header";
